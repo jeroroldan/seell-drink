@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neon-blue: #00f3ff;
+  --neon-pink: #ff00ff;
+}
+
+@layer base {
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer utilities {
+  .text-neon-blue {
+    color: var(--neon-blue);
+  }
+  .text-neon-pink {
+    color: var(--neon-pink);
+  }
+  .bg-neon-blue {
+    background-color: var(--neon-blue);
+  }
+  .bg-neon-pink {
+    background-color: var(--neon-pink);
+  }
+  .border-neon-blue {
+    border-color: var(--neon-blue);
+  }
+  .border-neon-pink {
+    border-color: var(--neon-pink);
+  }
+  .from-neon-blue {
+    --tw-gradient-from: var(--neon-blue);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 243, 255, 0));
+  }
+  .from-neon-pink {
+    --tw-gradient-from: var(--neon-pink);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 0, 255, 0));
+  }
+  .to-neon-blue {
+    --tw-gradient-to: var(--neon-blue);
+  }
+  .to-neon-pink {
+    --tw-gradient-to: var(--neon-pink);
+  }
+}
+
