@@ -3,7 +3,6 @@ import {
   Card,
   CardContent,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import Header from "./components/Header";
 
 export default function Home() {
@@ -25,23 +24,31 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-purple-900 to-black text-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-purple-900 to-black text-white relative">
+      <div className="fixed top-0 right-0 mr-4 mt-4">
+        <div className="relative bg-transparent p-2">
+          <span className="text-red-600 font-bold text-2xl">LÍDER</span>
+          <div
+            className="absolute bottom-0 left-0 right-0 h-0.5 bg-red-600"
+            style={{
+              transform: "rotate(-10deg)",
+              width: "calc(100% + 8px)",
+              marginLeft: "-4px",
+            }}
+          />
+        </div>
+      </div>
+
       <Header />
 
       <main className="container mx-auto px-4 md:px-0">
-        <section className="text-center py-10">
+        <section className="text-center py-5">
           <h2 className="text-5xl font-extrabold mb-6 animate-pulse">
             Desata tu Energía Nocturna
           </h2>
-          <p className="text-xl mb-8">
-            Descubre yu poder y lleva tus noches al siguiente nivel
+          <p className="text-xl">
+            Venta por pack cerrado de la bebida energizante <span>LIDER</span>
           </p>
-          <Button
-            size="lg"
-            className="bg-neon-blue text-black hover:bg-neon-blue/80"
-          >
-            Explora Nuestros Sabores
-          </Button>
         </section>
 
         <section id="productos" className="py-10">
@@ -50,7 +57,10 @@ export default function Home() {
           </h2>
           <div className="grid sm:grid-cols-2 gap-8 justify-center">
             {products.map((product) => (
-              <Card key={product.id} className="w-64 bg-white rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <Card
+                key={product.id}
+                className="w-64 bg-white rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300"
+              >
                 {/* Contenedor de imagen usando aspect-ratio para mantener proporción */}
                 <div className="relative w-full aspect-square bg-gray-50">
                   <Image
@@ -61,7 +71,10 @@ export default function Home() {
                   />
                 </div>
 
-                <CardContent className="p-4">
+                <CardContent
+                  className="p-4
+                "
+                >
                   <h3
                     className="text-lg font-bold text-gray-900"
                     title={product.name}
@@ -76,7 +89,6 @@ export default function Home() {
             ))}
           </div>
         </section>
-
       </main>
 
       <footer className="bg-gray-900 py-6">
