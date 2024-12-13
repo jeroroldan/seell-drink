@@ -9,14 +9,14 @@ export default function Home() {
   const products = [
     {
       id: 1,
-      name: "Speed Unlimited Original",
+      name: "Speed Unlimited XL pack x 12 uni.",
       description: "Energía explosiva para tus noches más intensas",
       price: 230,
       image: "/470.jpg",
     },
     {
-      id:  2,
-      name: "Speed Unlimited Tropical",
+      id: 2,
+      name: "Speed Unlimited  Original pack x 24 uni.",
       description: "Frescura energizante con un toque exótico",
       price: 230,
       image: "/speed45.PNG",
@@ -40,6 +40,15 @@ export default function Home() {
       </div>
 
       <Header />
+
+      <div className="relative w-full overflow-hidden bg-black bg-opacity-50 py-2">
+        <div className="animate-marquee whitespace-nowrap">
+          <span className="text-white  text-2xl font-bold mx-4">Pack x 24 unidades $2456,00</span>
+          <span className="text-white underline text-2xl font-bold mx-4">LIDER</span>
+          <span className="text-white text-2xl font-bold mx-4">Pack x 12 unidades $3456,00</span>
+          <span className="text-white underline text-2xl font-bold mx-4">LIDER</span>
+        </div>
+      </div>
 
       <main className="container mx-auto px-4 md:px-0">
         <section className="text-center py-5">
