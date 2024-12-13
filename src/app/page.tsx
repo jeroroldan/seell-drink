@@ -2,10 +2,6 @@ import Image from "next/image";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Header from "./components/Header";
@@ -13,20 +9,18 @@ import Header from "./components/Header";
 export default function Home() {
   const products = [
     {
+      id: 1,
       name: "Speed Unlimited Original",
       description: "Energía explosiva para tus noches más intensas",
-      features: ["Sabor clásico", "Máxima cafeína", "Vitaminas B"],
-      image: "/speed-unlimited-original.png",
+      price: 230,
+      image: "/470.jpg",
     },
     {
+      id:  2,
       name: "Speed Unlimited Tropical",
       description: "Frescura energizante con un toque exótico",
-      features: [
-        "Mezcla de frutas tropicales",
-        "Taurina potenciada",
-        "Electrolitos",
-      ],
-      image: "/speed-unlimited-tropical.png",
+      price: 230,
+      image: "/speed45.PNG",
     },
   ];
 
@@ -35,13 +29,12 @@ export default function Home() {
       <Header />
 
       <main className="container mx-auto px-4 md:px-0">
-        <section className="text-center py-20">
+        <section className="text-center py-10">
           <h2 className="text-5xl font-extrabold mb-6 animate-pulse">
             Desata tu Energía Nocturna
           </h2>
           <p className="text-xl mb-8">
-            Descubre yu poder y lleva tus noches al siguiente
-            nivel
+            Descubre yu poder y lleva tus noches al siguiente nivel
           </p>
           <Button
             size="lg"
@@ -51,64 +44,39 @@ export default function Home() {
           </Button>
         </section>
 
-        <section id="productos" className="py-20">
+        <section id="productos" className="py-10">
           <h2 className="text-4xl font-bold text-center mb-12">
             Nuestros Productos
           </h2>
           <div className="grid sm:grid-cols-2 gap-8 justify-center">
-            {products.map((product, index) => (
-              <Card
-                key={index}
-                className="max-w-sm w-full mx-auto bg-gradient-to-br from-gray-800 to-gray-900 border-neon-blue hover:border-neon-pink transition-all duration-300 transform hover:scale-105"
-              >
-                <CardHeader>
-                  <CardTitle className="text-xl font-bold text-neon-blue">
+            {products.map((product) => (
+              <Card key={product.id} className="w-64 bg-white rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                {/* Contenedor de imagen usando aspect-ratio para mantener proporción */}
+                <div className="relative w-full aspect-square bg-gray-50">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-cover rounded-t-xl"
+                  />
+                </div>
+
+                <CardContent className="p-4">
+                  <h3
+                    className="text-lg font-bold text-gray-900"
+                    title={product.name}
+                  >
                     {product.name}
-                  </CardTitle>
-                  <CardDescription className="text-gray-300">
-                    {product.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="aspect-square relative mb-4 w-32 h-32 mx-auto">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      layout="fill"
-                      objectFit="contain"
-                      className="rounded-md"
-                    />
-                  </div>
-                  <ul className="list-disc list-inside text-gray-300 text-sm">
-                    {product.features.map((feature, idx) => (
-                      <li key={idx}>{feature}</li>
-                    ))}
-                  </ul>
+                  </h3>
+                  <p className="text-lg font-bold text-gray-900">
+                    ${product.price.toFixed(2)}
+                  </p>
                 </CardContent>
-                <CardFooter>
-                  <Button className="w-full bg-gradient-to-r from-neon-blue to-neon-pink text-black hover:from-neon-pink hover:to-neon-blue transition-all duration-300">
-                    Comprar Ahora
-                  </Button>
-                </CardFooter>
               </Card>
             ))}
           </div>
         </section>
 
-        <section id="about" className="py-20 text-center">
-          <h2 className="text-4xl font-bold mb-6">Sobre Speed Unlimited</h2>
-          <p className="text-xl mb-8">
-            Nacimos para potenciar tus experiencias nocturnas. Con ingredientes
-            de alta calidad y sabores únicos, Speed Unlimited te acompaña en
-            cada aventura, fiesta y momento inolvidable.
-          </p>
-          <Button
-            variant="outline"
-            className="border-neon-blue text-neon-blue hover:bg-neon-blue hover:text-black transition-all duration-300"
-          >
-            Conoce Nuestra Historia
-          </Button>
-        </section>
       </main>
 
       <footer className="bg-gray-900 py-6">
