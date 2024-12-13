@@ -3,18 +3,20 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronUp } from "lucide-react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showVendorInfo, setShowVendorInfo] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleVendorInfo = () => setShowVendorInfo(!showVendorInfo);
 
   return (
     <header className="py-6 px-4 md:px-0 bg-gray-900 sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center">
         <h1 className="text-3xl font-bold tracking-tight text-neon-blue">
-          Drink Energy
+          Speed Unlimited
         </h1>
         <nav className="hidden md:block">
           <ul className="flex space-x-4">
@@ -36,12 +38,32 @@ export default function Header() {
             </li>
           </ul>
         </nav>
-        <Button
-          variant="outline"
-          className="hidden md:inline-flex border-neon-blue text-neon-blue hover:bg-neon-blue hover:text-black"
-        >
-          Contacto
-        </Button>
+        <div className="hidden md:block relative">
+          <Button
+            variant="outline"
+            className={`border-neon-blue text-neon-blue hover:bg-neon-blue hover:text-black transition-all duration-300 ${
+              showVendorInfo ? "transform -translate-y-full" : ""
+            }`}
+            onClick={toggleVendorInfo}
+          >
+            Contacto
+            <ChevronUp
+              className={`ml-2 h-4 w-4 transition-transform duration-300 ${
+                showVendorInfo ? "rotate-180" : ""
+              }`}
+            />
+          </Button>
+          {showVendorInfo && (
+            <div className="absolute top-full left-0 right-0 mt-2 p-4 bg-gray-800 rounded-md shadow-lg">
+              <h3 className="text-neon-blue font-semibold mb-2">
+                Información del Vendedor
+              </h3>
+              <p className="text-white">Nombre: Juan Pérez</p>
+              <p className="text-white">Email: juan@speedunlimited.com</p>
+              <p className="text-white">Teléfono: +1 234 567 8900</p>
+            </div>
+          )}
+        </div>
         <button
           className="md:hidden text-white"
           onClick={toggleMenu}
@@ -75,10 +97,26 @@ export default function Header() {
               <li>
                 <Button
                   variant="outline"
-                  className="w-full mt-4 border-neon-blue text-neon-blue hover:bg-neon-blue hover:text-black"
+                  className="w-full mt-4 border-neon-blue text-neon-blue hover:bg-neon-blue hover:text-black flex justify-between items-center"
+                  onClick={toggleVendorInfo}
                 >
                   Contacto
+                  <ChevronUp
+                    className={`h-4 w-4 transition-transform duration-300 ${
+                      showVendorInfo ? "rotate-180" : ""
+                    }`}
+                  />
                 </Button>
+                {showVendorInfo && (
+                  <div className="mt-4 p-4 bg-gray-800 rounded-md shadow-lg">
+                    <h3 className="text-neon-blue font-semibold mb-2">
+                      Información del Vendedor
+                    </h3>
+                    <p className="text-white">Nombre: Juan Pérez</p>
+                    <p className="text-white">Email: juan@speedunlimited.com</p>
+                    <p className="text-white">Teléfono: +1 234 567 8900</p>
+                  </div>
+                )}
               </li>
             </ul>
           </nav>
