@@ -4,6 +4,7 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import Header from "./components/Header";
+import { SellButton } from "./components/SellButton";
 
 export default function Home() {
   const products = [
@@ -41,29 +42,30 @@ export default function Home() {
 
       <Header />
 
+
       <div className="relative w-full overflow-hidden bg-black bg-opacity-50 py-2">
         <div className="animate-marquee whitespace-nowrap">
-          <span className="text-white  text-2xl font-bold mx-4">Pack x 24 unidades $2456,00</span>
-          <span className="text-white underline text-2xl font-bold mx-4">LIDER</span>
-          <span className="text-white text-2xl font-bold mx-4">Pack x 12 unidades $3456,00</span>
-          <span className="text-white underline text-2xl font-bold mx-4">LIDER</span>
+          <span className="text-white  text-2xl font-bold mx-4">
+            Pack x 24 unidades $2456,00
+          </span>
+          <span className="text-white underline text-2xl font-bold mx-4">
+            LIDER
+          </span>
+          <span className="text-white text-2xl font-bold mx-4">
+            Pack x 12 unidades $3456,00
+          </span>
+          <span className="text-white underline text-2xl font-bold mx-4">
+            LIDER
+          </span>
         </div>
       </div>
 
       <main className="container mx-auto px-4 md:px-0">
         <section className="text-center py-5">
-          <h2 className="text-5xl font-extrabold mb-6 animate-pulse">
-            Desata tu Energía Nocturna
-          </h2>
-          <p className="text-xl">
-            Venta por pack cerrado de la bebida energizante <span>LIDER</span>
-          </p>
+          <SellButton>Quiero Comprar!!!</SellButton>
         </section>
 
-        <section id="productos" className="py-10">
-          <h2 className="text-4xl font-bold text-center mb-12">
-            Nuestros Productos
-          </h2>
+        <section id="productos">
           <div className="grid sm:grid-cols-2 gap-8 justify-center">
             {products.map((product) => (
               <Card
@@ -76,6 +78,7 @@ export default function Home() {
                     src={product.image}
                     alt={product.name}
                     fill
+                    style={{ padding: "0.7rem" }}
                     className="object-cover rounded-t-xl"
                   />
                 </div>
@@ -100,7 +103,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="bg-gray-900 py-6">
+      <footer className="bg-gray-900 mt-3 py-6">
         <div className="container mx-auto px-4 md:px-0 text-center">
           <p>&copy; 2024 Speed Unlimited. Todos los derechos reservados.</p>
           <p className="mt-2 text-sm text-gray-400">
